@@ -42,8 +42,6 @@ class UserRegisterView(FormView):
         # enviar el codigo al email del user
         return super(UserRegisterView, self).form_valid(form)
 
-
-
 class LoginUser(FormView):
     template_name = 'users/login.html'
     form_class = LoginForm
@@ -57,7 +55,6 @@ class LoginUser(FormView):
         login(self.request, user)
         return super(LoginUser, self).form_valid(form)
 
-
 class LogoutView(View):
 
     def get(self, request, *args, **kargs):
@@ -67,7 +64,6 @@ class LogoutView(View):
                 'users_app:user-login'
             )
         )
-
 
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update.html'

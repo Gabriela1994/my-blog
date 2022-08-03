@@ -1,6 +1,6 @@
 import datetime
 #
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 
@@ -8,12 +8,13 @@ from django.views.generic import (
     TemplateView,
     CreateView,
 )
+from django.contrib.messages.views import SuccessMessageMixin
 #apps entrada
 from applications.entrada.models import Entry
 #models
 from .models import Home
 #forms
-from .forms import SuscribersForm
+from .forms import SuscribersForm, ContactForm
 
 class HomePageView(TemplateView):
     template_name = "home/index.html"
@@ -35,3 +36,9 @@ class HomePageView(TemplateView):
 class SuscriberCreateView(CreateView):
     form_class = SuscribersForm
     success_url = '.'
+
+class ContactCreateView(SuccessMessageMixin, CreateView):
+    template_name = "home/index.html"
+    form_class = ContactForm
+    success_url = reverse_lazy("home_app:index")
+    success_message = 'Mensaje enviado correctamente'

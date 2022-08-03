@@ -1,25 +1,44 @@
 <header>
-    <div class="grid-x grid-margin-x header">
-        <div class="cell small-12 medium-4 large-3">
-            <a href="#" style="font-size: 20px; color: #0277bd;">
-                Pankēki-World
+    <div class="grid-x grid-margin-x" style="position: fixed;
+    width: 2130px;
+    height: 60px;
+    left: 10px;
+    top: 0px; background: linear-gradient(94.23deg, #6B54FA -2.64%, #DD6B6B 90.08%);
+    border-radius: 0px 0px 0px 0px;">
+        <div class="cell small-12 medium-4 large-4">
+            <a href=" {% url 'home_app:index' %} " style="font-family:cambria; font-size: 40px; color: #ffffff; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                <strong> Pankēki-World </strong>
             </a>
         </div>
-        <div class="cell small-12 medium-4">
-            
+        <div class="cell small-10 medium-3">
+            <div class="cell small-5 medium-4" style="margin-top: 1em; font-family:cambria; font-size: 18px; color: #ffffff; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                ¡Bienvenidos a tu blog favorito de anime y manga!
+            </div>
         </div>
         <div class="cell small-12 large-5">
-            <ul class="menu" style="justify-content: flex-end;">
+            <ul class="menu" style="margin-top: 0.5em; justify-content: flex-end;">
                 <li>
-                    <a href="#">Home</a>
+                    <a style="font-family:cambria; font-size: 18px; color: #ffffff;" class="clear button secondary" href="{%url 'home_app:index'%}">Inicio</a>
                 </li>
                 <li>
-                    <a href="#">Blog</a>
+                    <a style="font-family:cambria; font-size: 18px;color: #ffffff;" class="clear button secondary" href="{%url 'entrada_app:entry-lista'%}">Entradas</a>
                 </li>
                 <li>
-                    <a class="success button">Acceder</a>
+                    <a style="font-family:cambria; font-size: 18px;color: #ffffff;" class="clear button secondary" href="#">Foro</a>
                 </li>
-                
+                <li>
+                    <a style="font-family:cambria; font-size: 18px;color: #ffffff;" class="clear button secondary" href="#">Nosotros</a>
+                </li>
+                <li>
+                    <a style="font-family:cambria; font-size: 18px;color: #ffffff; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.9);" class="clear button" href="#">Registrate acá</a>
+                </li>
+                <p>
+                    <button class="button" data-open="exampleModal2" style="margin-top: -0.1em; font-family:cambria; font-size: 18px; color: #ffffff; background: linear-gradient(89.52deg, rgba(166, 19, 236, 0) -1.13%, rgba(222, 31, 253, 0) 99.75%);
+                    border: 4px solid #F5F5F5;
+                    border-radius: 20px;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 300px;">Inicia sesión</button>
+                </p>                
             </ul>
         </div>
     </div>
