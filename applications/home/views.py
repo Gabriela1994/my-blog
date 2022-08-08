@@ -1,8 +1,5 @@
-import datetime
-#
-from django.shortcuts import render, redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy, reverse
+
+from django.urls import reverse_lazy
 
 from django.views.generic import (
     TemplateView,

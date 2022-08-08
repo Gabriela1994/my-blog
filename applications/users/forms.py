@@ -35,11 +35,49 @@ class UserRegisterForm(forms.ModelForm):
             'genero',
             'date_birth',
         )
+        widgets = {
+            "email": forms.EmailInput(
+                attrs={
+                    'placeholder': 'Correo Electrónico',
+                }
+            ),
+            'full_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Nombres y apellidos',
+                }
+            ),
+            'ocupation': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ocupación',
+                }
+            ),
+            'date_birth': forms.DateInput(
+                attrs={
+                    'type':'date',
+                }
+            ),
+        }
     
+    # def clean_password2(self):
+    #     if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+    #         self.add_error('password2', 'Las contraseñas no coinciden')
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        email_taken = User.objects.filter(email=email).exists()
+        if email_taken:
+            raise forms.ValidationError('Esta dirección de correo electrónico ya está en uso')
+        return email
+        
     def clean_password2(self):
-        if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+        """verificar si ambas contraseñas coinciden"""
+        password1= self.cleaned_data['password1']
+        password2= self.cleaned_data['password2']
+
+        if password1 != password2:            
             self.add_error('password2', 'Las contraseñas no coinciden')
 
+        if len(password1) < 8:
+            self.add_error('password1', 'La contraseña debe contener mínimo 8 carácteres')
 
 class LoginForm(forms.Form):
     email = forms.CharField(
@@ -67,8 +105,9 @@ class LoginForm(forms.Form):
         password = self.cleaned_data['password']
 
         if not authenticate(email=email, password=password):
-            raise forms.ValidationError('Los datos de usuario no son correctos')
-        
+            self.add_error('password', 'La contraseña es incorrecta')
+            self.add_error('email', 'El correo electrónico que ingresaste no existe')
+        #    raise forms.ValidationError('Los datos de usuario no son correctos')        
         return self.cleaned_data
 
 

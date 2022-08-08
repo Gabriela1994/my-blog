@@ -1,0 +1,68 @@
+<!-- head para PC -->
+{% extends "users/base_users.html" %}
+{% load static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center" style="margin-top: 6em;">
+        <div class="cell medium-10 large-6" style="margin-top: 2em; background: linear-gradient(94.23deg, #6B54FA -2.64%, #DD6B6B 90.08%); border-radius: 15px 15px 15px 15px;">
+            <div class="card-divider" style="font-family: 'Cambria'; font-size: 28px; color: #ffffff; background: linear-gradient(94.23deg, #6B54FA -2.64%, #DD6B6B 90.08%); border-radius: 15px 15px 15px 15px;">
+                <h4><strong> Crea una cuenta</strong></h4>
+            </div>
+            <div class="card-section">
+                <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                        </label>
+                    <div class="cell large-12">
+                        <label style= "color: #ffffff"> <strong>Correo electrónico:</strong>
+                            {{form.email}}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label style= "color: #ffffff"> <strong>Nombre completo:</strong>
+                            {{form.full_name}}
+                        </label>
+                    </div>
+                    <div class="cell medium-6">
+                        <label style= "color: #ffffff"> <strong>Ocupación:</strong>
+                            {{form.ocupation}}
+                        </label>
+                    </div>
+                    <div class="cell medium-6">
+                        <label style= "color: #ffffff"> <strong>Género:</strong>
+                            {{form.genero}}
+                        </label>
+                    </div>
+                    <div class="cell medium-6">
+                        <label style= "color: #ffffff"> <strong>Fecha de nacimiento:</strong>
+                            {{form.date_birth}}
+                        </label>
+                    </div>
+                    <div class="cell medium-12">
+                        <label style= "color: #ffffff"> <strong>Contraseña:</strong>
+                            {{form.password1}}
+                            {{form.password1.errors}}
+                        </label>
+                    </div>
+                    <div class="cell medium-12">
+                        <label style= "color: #ffffff"> <strong>Repetir contraseña:</strong>
+                            {{form.password2}}
+                            {{form.password2.errors}}
+                        </label>
+                    </div>
+                    <button type="submit" class="cell hollow button primary" style="margin-top: -0.1em; font-family:cambria; font-size: 18px; color: #ffffff; background: linear-gradient(89.52deg, rgba(166, 19, 236, 0) -1.13%, rgba(222, 31, 253, 0) 99.75%);
+                    border: 4px solid #F5F5F5;
+                    border-radius: 20px;
+                    border-radius: 300px;">¡Registrate!
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -28,7 +28,7 @@
                 <div class="card" style="width: 100%; background: #FCFCFC; box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.15); border-radius: 20px;"">
                     <img src=" {{entrada.image.url}} " style="height:120px; ">
                     <div class="card-section">
-                        <h5> {{entrada.title | truncatechars:60}} </h5>
+                        <a href="{% url 'entrada_app:entry-detail' entrada.id %}"><h5> {{entrada.title | truncatechars:60}} </h5></a> 
                     </div>
                 </div>
             </div>                
@@ -83,7 +83,7 @@
             box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.15); border-radius: 20px;">
                 <img src=" {{entrada.image.url}}" style="height:200px;">
                 <div class="card-section">
-                    <h4> {{entrada.title | truncatechars:40}} </h4>
+                <a href="{% url 'entrada_app:entry-detail' entrada.id %}"><h5> {{entrada.title | truncatechars:60}} </h5> </a>
                     <p> {{entrada.resume | truncatechars:70}} </p>
                 </div>
             </div>        

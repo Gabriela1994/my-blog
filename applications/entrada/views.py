@@ -5,6 +5,7 @@ from django.views.generic import (
     DetailView,
 )
 #
+from django.urls import reverse_lazy
 from .models import Entry, Category
 
 class EntryListView(ListView):
@@ -28,3 +29,4 @@ class EntryListView(ListView):
 class EntryDetailView(DetailView):
     template_name = "entrada/detail.html"
     model = Entry
+    #success_url = reverse_lazy("home_app:index")
