@@ -1,0 +1,62 @@
+<!-- head para PC -->
+{% extends "favoritos/base_favoritos.html" %}
+{% load static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center" style="margin-top: 6em;">
+        <!-- bloque de datos de usuario -->
+        <div class="cell small-12 large-4">
+            <div class="card-section"
+                style="width: 100%; background: linear-gradient(94.23deg, #6B54FA -2.64%, #DD6B6B 90.08%); border-radius: 15px 15px 15px 15px;">
+                <div class="grid-container"
+                    style="font-family: 'Cambria'; font-size: 15px; color: #ffffff; background: linear-gradient(94.23deg, #6B54FA -2.64%, #DD6B6B 90.08%); border-radius: 15px 15px 15px 15px;">
+                    <h5> <strong>{{user.full_name}}</strong> </h5>
+                    <p> {{user.email}} - {{user.ocupation}} - {{user.date_birth}}</p>
+                    <button type="submit" class="cell hollow button secondary" style="margin-top: -0.1em; font-family:cambria; font-size: 15px; color: #ffffff; background: linear-gradient(89.52deg, rgba(166, 19, 236, 0) -1.13%, rgba(222, 31, 253, 0) 99.75%);
+                    border: 1px solid #F5F5F5;
+                    border-radius: 10px;
+                    border-radius: 300px;">Editar información
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIN bloque de datos de usuario -->
+
+
+        <!-- bloque de articulos favoritos de usuario -->
+        <div class="cell large-8 grid-x grid-margin-x align-center">
+            {% for entrada in entradas_user %}
+            <div class="cell small-12">
+                <div class="card-favoritos"
+                    style="width: 100%; background: linear-gradient(94.23deg, #6B54FA -2.64%, #DD6B6B 90.08%); border-radius: 15px 15px 15px 15px;">
+                    <img class="card-favoritos-img" style="height:80px;" src="{{ entrada.entry.image.url }}">
+                    <div class="card-favoritos-body" style="font-family: 'Cambria'; font-size: 15px; color: #ffffff;">
+                        <h4 class="card-favoritos-body-titulo">{{ entrada.entry.title | truncatechars:100}}</h4>
+                        <p class="card-favoritos-body-text">{{ entrada.entry.resume | truncatechars:200 }} </p>
+                        <div class="medium-12 cell">
+                            <p>
+                                <a href="{% url 'users_app:user-register' %}" class="button" style="margin-bottom: -1em; font-family:cambria; font-size: 15px; color: #ffffff; background: linear-gradient(89.52deg, rgba(166, 19, 236, 0) -1.13%, rgba(222, 31, 253, 0) 99.75%);
+                                border: 1px solid #F5F5F5;
+                                border-radius: 20px;
+                                border-radius: 300px;">Ver</a>
+                                <a href="{% url 'users_app:user-register' %}" class="button" style="margin-bottom: -1em; font-family:cambria; font-size: 15px; color: #ffffff; background: linear-gradient(89.52deg, rgba(166, 19, 236, 0) -1.13%, rgba(222, 31, 253, 0) 99.75%);
+                                border: 1px solid #F5F5F5;
+                                border-radius: 20px;
+                                border-radius: 300px;">Eliminar</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <!-- FIN bloque de articulos favoritos de usuario -->
+    </div>
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}

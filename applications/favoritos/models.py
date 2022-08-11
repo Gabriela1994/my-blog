@@ -3,6 +3,7 @@ from django.conf import settings
 #apps de terceros
 from model_utils.models import TimeStampedModel
 from applications.entrada.models import Entry
+from .managers import FavoritesManager
 
 class Favorites(TimeStampedModel):
     """Modelo para favoritos"""
@@ -17,6 +18,9 @@ class Favorites(TimeStampedModel):
         related_name='entry_favorites',
         on_delete=models.CASCADE
     )
+
+    objects = FavoritesManager()
+    
     class Meta:
         unique_together = ('user', 'entry')
         verbose_name = 'Entrada favorita'

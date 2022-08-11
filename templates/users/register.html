@@ -13,7 +13,8 @@
                 <h4><strong> Crea una cuenta</strong></h4>
             </div>
             <div class="card-section">
-                <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     {% for error in field.errors %}
                         {{ error }}
                     {% endfor %}
@@ -21,16 +22,19 @@
                     <div class="cell large-12">
                         <label style= "color: #ffffff"> <strong>Correo electrónico:</strong>
                             {{form.email}}
+                            {{form.email.errors}}
                         </label>
                     </div>
                     <div class="cell large-6">
                         <label style= "color: #ffffff"> <strong>Nombre completo:</strong>
                             {{form.full_name}}
+                            {{form.full_name.errors}}
                         </label>
                     </div>
                     <div class="cell medium-6">
                         <label style= "color: #ffffff"> <strong>Ocupación:</strong>
                             {{form.ocupation}}
+                            {{form.ocupation.errors}}
                         </label>
                     </div>
                     <div class="cell medium-6">

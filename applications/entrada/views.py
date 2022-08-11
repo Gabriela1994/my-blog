@@ -29,4 +29,4 @@ class EntryListView(ListView):
 class EntryDetailView(DetailView):
     template_name = "entrada/detail.html"
     model = Entry
-    #success_url = reverse_lazy("home_app:index")
+    success_url = reverse_lazy("home_app:index")
